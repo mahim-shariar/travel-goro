@@ -1,0 +1,38 @@
+.img-mb{
+    margin-bottom: 185px !important ;
+}
+.fluid{
+    width: 100%;
+}
+.text-trancform{
+    z-index: 7;
+    white-space: nowrap;
+    font-size: 80px;
+    line-height: 90px;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    font-family: "Playfair Display";
+    font-style: italic;
+    letter-spacing: -5px;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    text-align: inherit;
+    border-width: 0px;
+    margin: 0px;
+    padding: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    opacity: 1;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform-origin: 50% 50% 0px;
+}
+.btn-color{
+    background-color: rgb(237, 76, 18) !important ;
+}
+
+.btn-color:hover{
+    background-color: rgb(57, 54, 54) !important;
+    color: white !important ;
+}
