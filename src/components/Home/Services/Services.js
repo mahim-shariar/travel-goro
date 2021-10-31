@@ -6,14 +6,16 @@ const Services = () => {
     let [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8888/ticket')
+        fetch('https://shrieking-moonlight-70227.herokuapp.com/ticket')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
     return (
         <div className='container' >
             <div className="row" >
-                <h1 className='text-margin '>Experience of Our Travelers</h1>
+                <div className='text-tr' >
+                    <h1 className='text-margin text-center '>Experience of <span className='t-color' > Our Travelers </span></h1>
+                </div>
                 {
                     services.map(service => <Service key={service._id}
                         service={service} ></Service>)

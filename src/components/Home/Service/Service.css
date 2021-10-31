@@ -87,7 +87,7 @@ img{
 }
 
 
-.ui-card:hover .description button{
+.ui-card:hover .description .btn-style{
     transform: translateY(0);
     opacity: 1;
 }

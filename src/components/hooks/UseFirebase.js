@@ -1,23 +1,57 @@
+import { useEffect, useState } from "react"
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import Init from "../../fireBase/firebase.init";
 
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { useState } from "react";
-import Init from '../../fireBase/firebase.init';
+Init()
 
-Init();
-let UseFirebase = () =>{
-    let [user,setUser] = useState()
-    let auth = getAuth()
-    let handleGoogleSignIN = () =>{
-        const Googleprovider = new GoogleAuthProvider();
-        signInWithPopup(auth,Googleprovider)
-        .then(result =>{
-            setUser(result.user)
-        })
+const useFIrebase = () => {
+
+    const [user, setUser] = useState({})
+    const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = useState(true);
+
+    const auth = getAuth();
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const signInWithGoogle = () => {
+        setIsLoading(true)
+        return signInWithPopup(auth, googleProvider)
     }
-    return{
-       handleGoogleSignIN,
-       user,
+    const logOut = () => {
+        setIsLoading(true)
+        signOut(auth)
+            .then(() => {
+                setUser({}); //for useEffect
+                setError("");
+                console.log("logout seccess!");
+            })
+            .finally(() => setIsLoading(false))
+    }
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+
+                setUser(user);
+            }
+            else {
+                setUser({})
+            }
+            setIsLoading(false);
+        });
+    }, [])
+
+    return {
+        user,
+        error,
+        logOut,
+        signInWithGoogle,
+        setUser,
+        setIsLoading,
+        isLoading,
+        setError,
     }
 }
 
-export default UseFirebase;
+export default useFIrebase

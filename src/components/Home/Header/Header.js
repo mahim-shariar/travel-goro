@@ -1,35 +1,40 @@
 import React from 'react';
-// import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+
+
 import './Header.css'
 
 const Header = () => {
+    let { user, logOut } = useAuth();
     return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark">
-            <div className="container">
-                <NavLink className="navbar-brand" to="/home">Web Zone</NavLink>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <div className="mx-auto"></div>
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <NavLink className="text-white nav-link" to="/home">Home</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="text-white nav-link" to="/guide">Top Guide</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="text-white nav-link" to="/blog">Blog</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="text-white nav-link" to="/contact">Contact</NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div>
+            <Navbar bg="dark" expand="lg" className='nav-hight' > 
+                <Container fluid>
+                    <Navbar.Brand className='fw-bold'>Travel <span className='t-color' > Gone </span></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll">
+                        <Nav
+                            className="ms-auto my-2 my-lg-0"
+                            style={{ maxHeight: '100px' }}
+                            navbarScroll
+                        >
+                            <NavLink className='nav-link text-light ' to="/home">Home</NavLink>
+                            <NavLink className='nav-link text-light ' to="/guide">Top guide</NavLink>
+                            <NavLink className='nav-link text-light ' to="/contact">Contact </NavLink>
+                            {
+                                user.email ? <div className='d-flex mx-auto ' >
+                                <NavLink className='nav-link text-light ' to="/myorder"> My Order </NavLink>
+
+                                   <p className='text-light text-center mt-auto'> {user.displayName} </p> <button className='nav-link btn text-light' onClick={logOut}  > Log Out </button>
+                                </div> : <NavLink className='nav-link text-light ' to="/login">LogIn </NavLink>
+                            }
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </div>
     )
 };
 

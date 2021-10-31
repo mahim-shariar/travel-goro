@@ -1,17 +1,31 @@
 import React from 'react';
-import UseFirebase from '../hooks/UseFirebase';
+import { useHistory, useLocation } from 'react-router';
+import useAuth from '../hooks/useAuth';
 import './SignIn.css'
 
 const SignIn = () => {
-    let {handleGoogleSignIN,user } = UseFirebase()
-    console.log(user);
+    let {user,signInWithGoogle,setUser,setIsLoading} = useAuth();
+
+    let location = useLocation();
+    let history = useHistory()
+
+    let redirect_uri = location.state?.form || '/';
+    
+    let handleGoogleSignIN = ()=>{
+        signInWithGoogle()
+        .then(res =>{
+            setUser(res.user)
+            history.push(redirect_uri)
+        })
+        .finally(()=> setIsLoading(false))
+
+    }
 
     return (
-        <div className='w-50 mx-auto contaniner border p-5 mt-5 ' >
-            <div>
-                <h1 className="text-color " > Login  </h1>
-            </div>
-            <button className='btn mx-auto btn-color ' onClick={handleGoogleSignIN} > <img className="img-fluid"  src="https://cdn-teams-slug.flaticon.com/google.jpg" alt="" /></button>
+        <div className='p-5 mx-auto mt-5 border w-50 contaniner App ' >
+                <h1 className='text-center '>Login</h1>            
+                <button className='btn' onClick={handleGoogleSignIN} > <img className="img-fluid"  src="https://cdn-teams-slug.flaticon.com/google.jpg" alt="" /></button>
+                <h1> {user.email} </h1>
         </div>
     );
 };
