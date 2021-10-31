@@ -15,6 +15,7 @@ import MyOrder from './components/Order/MyOrder';
 import Contact from './components/Contact/Contact';
 import AuthProvider from './components/context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
           </PrivateRoute>
           <Route path='/contact'>
             <Contact></Contact>
+          </Route>
+          <Route exact path='*'>
+            <NotFound></NotFound>
           </Route>
         </Switch>
         <Footer></Footer>
