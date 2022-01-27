@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SignIn from './components/SignIn/SignIn';
 import Header from './components/Home/Header/Header';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from './components/Home/Main/Main';
@@ -19,6 +18,8 @@ import NotFound from './components/NotFound/NotFound';
 import Drawers from './components/DashBoard/Drawers/Drawers';
 import HomeBlogs from './components/HomeBlogs/HomeBlogs';
 import BlogInfo from './components/BlogInfo/BlogInfo';
+import Login from './components/Login/Login/Login';
+import Registar from './components/Login/Registar/Registar';
 
 function App() {
   return (
@@ -44,7 +45,10 @@ function App() {
             <AllGuides></AllGuides>
           </Route>
           <Route path='/login'>
-            <SignIn></SignIn>
+            <Login></Login>
+          </Route>
+          <Route path='/registar'>
+            <Registar></Registar>
           </Route>
           <PrivateRoute path='/service/:id'>
             <UIservice></UIservice>
