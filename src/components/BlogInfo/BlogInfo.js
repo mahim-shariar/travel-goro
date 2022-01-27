@@ -6,7 +6,7 @@ const BlogInfo = () => {
     let { id } = useParams();
     let { title, image, info, category, cost, address, description } = blog;
     useEffect(() => {
-        fetch(`http://localhost:8888/blog/${id}`)
+        fetch(`https://thawing-woodland-53152.herokuapp.com/blog/${id}`)
             .then(res => res.json())
             .then(data => setblog(data))
     }, [id])

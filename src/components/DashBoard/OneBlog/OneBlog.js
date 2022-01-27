@@ -5,7 +5,7 @@ const OneBlog = (props) => {
     let { _id, image, title, info, category, cost, address, description } = props.blog;
     const handleSubmit = (e) => {
         const id = { _id }
-        fetch(`http://localhost:8888/blog?role=${'panding'}`, {
+        fetch(`https://thawing-woodland-53152.herokuapp.com/blog?role=${'panding'}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

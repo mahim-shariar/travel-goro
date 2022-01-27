@@ -29,7 +29,7 @@ const useFIrebase = () => {
             .finally(() => setIsLoading(false))
     }
     useEffect(() => {
-        fetch(`http://localhost:8888/users/${user.email}`)
+        fetch(`https://thawing-woodland-53152.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
@@ -55,6 +55,7 @@ const useFIrebase = () => {
         setIsLoading,
         isLoading,
         setError,
+        admin
     }
 }
 

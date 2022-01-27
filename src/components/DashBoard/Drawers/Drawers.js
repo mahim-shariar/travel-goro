@@ -20,7 +20,6 @@ import useAuth from '../../hooks/useAuth';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import Pay from '../Pay/Pay';
 import GameReview from '../gameReview/GameReview';
-import AddGame from '../AddGame/AddGame';
 import AdminRoute from '../../AdminRoute/AdminRoute';
 import Blog from '../Blog/Blog';
 import Allblog from '../Allblog/Allblog';
@@ -40,28 +39,28 @@ const Drawers = (props) => {
             <Toolbar />
             <Divider />
             <Box sx={{ marginY: 5 }} >
-                <Box>
+                <NavLink to='/home' style={{ textDecoration: 'none' }} >
+                    <Button variant='text' sx={{ width: 1 }} > Home </Button>
+                </NavLink>
+                {admin ? <Box>
                     <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none' }} >
                         <Button variant="text" sx={{ width: 1 }} > Make Admin </Button>
-                    </NavLink>
-                </Box>
-                <Box>
-                    <NavLink to='/home' style={{ textDecoration: 'none' }} >
-                        <Button variant='text' sx={{ width: 1 }} > Home </Button>
-                    </NavLink>
-                    <NavLink to={`${url}/pay`} style={{ textDecoration: 'none' }} >
-                        <Button variant="text" sx={{ width: 1 }} > Pay </Button>
                     </NavLink>
                     <NavLink to={`${url}/allBlog`} style={{ textDecoration: 'none' }} >
                         <Button variant="text" sx={{ width: 1 }} > All Blog </Button>
                     </NavLink>
-                    <NavLink to={`${url}/review`} style={{ textDecoration: 'none' }} >
-                        <Button variant="text" sx={{ width: 1 }} > Review </Button>
-                    </NavLink>
-                    <NavLink to={`${url}/blog`} style={{ textDecoration: 'none' }} >
-                        <Button variant="text" sx={{ width: 1 }} > Add Blog </Button>
-                    </NavLink>
                 </Box>
+                    : <Box>
+                        <NavLink to={`${url}/pay`} style={{ textDecoration: 'none' }} >
+                            <Button variant="text" sx={{ width: 1 }} > Pay </Button>
+                        </NavLink>
+                        <NavLink to={`${url}/review`} style={{ textDecoration: 'none' }} >
+                            <Button variant="text" sx={{ width: 1 }} > Review </Button>
+                        </NavLink>
+                    </Box>}
+                <NavLink to={`${url}/blog`} style={{ textDecoration: 'none' }} >
+                    <Button variant="text" sx={{ width: 1 }} > Add Blog </Button>
+                </NavLink>
                 <Button onClick={logOut} variant="text" sx={{ width: 1 }} > Log Out </Button>
             </Box>
         </div>
@@ -131,7 +130,7 @@ const Drawers = (props) => {
                 <Toolbar />
                 <Switch>
                     <Route exact path={path}>
-
+                        <GameReview></GameReview>
                     </Route>
                     <Route path={`${path}/pay`}>
                         <Pay></Pay>
@@ -142,14 +141,11 @@ const Drawers = (props) => {
                     <Route path={`${path}/blog`}>
                         <Blog></Blog>
                     </Route>
-                    <Route path={`${path}/allBlog`}>
+                    <AdminRoute path={`${path}/allBlog`}>
                         <Allblog></Allblog>
-                    </Route>
-                    <Route path={`${path}/makeAdmin`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
-                    <AdminRoute path={`${path}/addgames`}>
-                        <AddGame></AddGame>
                     </AdminRoute>
                 </Switch>
             </Box>

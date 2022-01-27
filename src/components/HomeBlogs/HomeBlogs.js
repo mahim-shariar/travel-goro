@@ -10,7 +10,7 @@ const HomeBlogs = () => {
     const [pageCount, setPageCount] = useState(0);
     const [displayProducts, setDisplayProducts] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:8888/blog?page=${page}&&size=${size}`)
+        fetch(`https://thawing-woodland-53152.herokuapp.com/blog?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setBlogs(data.blog);

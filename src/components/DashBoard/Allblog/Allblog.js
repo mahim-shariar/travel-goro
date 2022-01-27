@@ -8,7 +8,7 @@ const Allblog = () => {
     let [blogs, setBlogs] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:8888/blog')
+        fetch('https://thawing-woodland-53152.herokuapp.com/blog')
             .then(res => res.json())
             .then(data => {
                 setBlogs(data.blog)

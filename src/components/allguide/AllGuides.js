@@ -6,7 +6,7 @@ const AllGuides = () => {
 
     let [guide, setGuide] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:8888/guide')
+        fetch('https://thawing-woodland-53152.herokuapp.com/guide')
             .then(res => res.json())
             .then(data => setGuide(data))
     }, [])

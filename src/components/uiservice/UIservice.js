@@ -9,18 +9,18 @@ const UIservice = () => {
     let { id } = useParams();
     let { name, img, days, place, price } = pro;
     useEffect(() => {
-        fetch(`http://localhost:8888/service/${id}`)
+        fetch(`https://thawing-woodland-53152.herokuapp.com/service/${id}`)
             .then(res => res.json())
             .then(data => setPro(data))
-    }, [])
+    }, [id])
 
     let handlePlaceOrder = () => {
-        axios.post('http://localhost:8888/orders', pro)
+        axios.post('https://thawing-woodland-53152.herokuapp.com/orders', pro)
             .then(res => {
-                if(res.data.insertedId){
+                if (res.data.insertedId) {
                     alert('this product has is added')
                 }
-                else{
+                else {
                     alert('this product is added')
                 }
             })

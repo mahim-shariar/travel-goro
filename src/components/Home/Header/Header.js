@@ -1,42 +1,49 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Avatar } from '@mui/material';
+import useAuth from './../../hooks/useAuth';
 
+const style = {
+    textDecoration: 'none',
+    marginRight: '10px',
+    fontSize: '17px',
+    color: 'white'
+}
 
-import './Header.css'
-
-const Header = () => {
-    let { user, logOut } = useAuth();
+const Navigation = () => {
+    const { user, logOut } = useAuth();
     return (
-        <div>
-            <Navbar bg="dark" expand="lg" className='nav-hight' > 
-                <Container fluid>
-                    <Navbar.Brand className='fw-bold'>Travel <span className='t-color' > Gone </span></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" />
-                    <Navbar.Collapse id="navbarScroll">
-                        <Nav
-                            className="ms-auto my-2 my-lg-0"
-                            style={{ maxHeight: '100px' }}
-                            navbarScroll
-                        >
-                            <NavLink className='nav-link text-light ' to="/home">Home</NavLink>
-                            <NavLink className='nav-link text-light ' to="/guide">Top guide</NavLink>
-                            <NavLink className='nav-link text-light ' to="/contact">Contact </NavLink>
-                            <NavLink className='nav-link text-light ' to='/Deshbord'>Deshbord</NavLink>
-                            {
-                                user.email ? <div className='d-flex mx-auto ' >
-                                <NavLink className='nav-link text-light ' to="/myorder"> My Order </NavLink>
+        <Navbar bg="dark" variant="dark" className='mx-2' collapseOnSelect expand="lg" style={{ backgroundColor: '#0a1735', }}>
+            <Navbar.Brand href="#home">
+                <h4>
+                    <span className='text-light' > Travel </span> <span className='text-primary' > Zone </span>
+                </h4>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse >
+                <Nav className='text-primary align-items-center ms-auto'>
+                    <Link style={style}  to="/home">Home</Link>
+                    <Link style={style}  to="/guide">Top guide</Link>
+                    <Link style={style}  to="/contact">Contact </Link>
+                    <Link style={style} to='/Deshbord'>Deshbord</Link>
+                    {
+                        user.email ? <div className='d-flex mx-auto ' >
+                            <Link style={style} className='nav-link text-light my-auto ' to="/myorder"> My Order </Link>
 
-                                   <p className='text-light text-center mt-auto'> {user.displayName} </p> <button className='nav-link btn text-light' onClick={logOut}  > Log Out </button>
-                                </div> : <NavLink className='nav-link text-light ' to="/login">LogIn </NavLink>
-                            }
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </div>
-    )
+                            <p className='text-light text-center mt-auto'> {user.displayName} </p> <button className='nav-link btn text-light' onClick={logOut}  > Log Out </button>
+                        </div> : <Link style={style} className='nav-link text-light ' to="/login">LogIn </Link>
+                    }
+                    {
+                        user.email && <Avatar
+                            alt="Remy Sharp"
+                            src={user?.photoURL}
+                            sx={{ width: 45, height: 45, m: 1 }}
+                        />
+                    }
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar >
+    );
 };
-
-export default Header;
+export default Navigation;

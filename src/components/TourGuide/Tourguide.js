@@ -5,7 +5,7 @@ import './Tourguide.css';
 const Tourguide = () => {
     let [guide, setGuide] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:8888/tourguide')
+        fetch('https://thawing-woodland-53152.herokuapp.com/tourguide')
             .then(res => res.json())
             .then(data => setGuide(data))
     }, [])

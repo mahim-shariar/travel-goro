@@ -6,13 +6,13 @@ const MyOrder = () => {
     let [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:8888/orders')
+        fetch('https://thawing-woodland-53152.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
 
     const handleDelete = id =>{
-        fetch(`http://localhost:8888/orders/${id}`,{
+        fetch(`https://thawing-woodland-53152.herokuapp.com/orders/${id}`,{
             method:"DELETE",
         })
         .then(res=>res.json())

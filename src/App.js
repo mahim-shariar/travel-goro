@@ -58,9 +58,9 @@ function App() {
           <Route path='/contact'>
             <Contact></Contact>
           </Route>
-          <Route path='/Deshbord'>
+          <PrivateRoute path='/Deshbord'>
             <Drawers></Drawers>
-          </Route>
+          </PrivateRoute>
           <Route exact path='*'>
             <NotFound></NotFound>
           </Route>

@@ -22,7 +22,7 @@ const GameReview = () => {
             name: user.displayName,
             email: user.email
         }
-        fetch('http://localhost:8888/review', {
+        fetch('https://thawing-woodland-53152.herokuapp.com/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
