@@ -16,6 +16,9 @@ import Contact from './components/Contact/Contact';
 import AuthProvider from './components/context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import NotFound from './components/NotFound/NotFound';
+import Drawers from './components/DashBoard/Drawers/Drawers';
+import HomeBlogs from './components/HomeBlogs/HomeBlogs';
+import BlogInfo from './components/BlogInfo/BlogInfo';
 
 function App() {
   return (
@@ -28,12 +31,14 @@ function App() {
             <Worldmap></Worldmap>
             <Services></Services>
             <Tourguide></Tourguide>
+            <HomeBlogs></HomeBlogs>
           </Route>
           <Route path='/home' >
             <Main></Main>
             <Worldmap></Worldmap>
             <Services></Services>
             <Tourguide></Tourguide>
+            <HomeBlogs></HomeBlogs>
           </Route>
           <Route path='/guide'>
             <AllGuides></AllGuides>
@@ -44,11 +49,17 @@ function App() {
           <PrivateRoute path='/service/:id'>
             <UIservice></UIservice>
           </PrivateRoute>
+          <PrivateRoute path='/blog/:id'>
+            <BlogInfo></BlogInfo>
+          </PrivateRoute>
           <PrivateRoute path='/myorder'>
             <MyOrder></MyOrder>
           </PrivateRoute>
           <Route path='/contact'>
             <Contact></Contact>
+          </Route>
+          <Route path='/Deshbord'>
+            <Drawers></Drawers>
           </Route>
           <Route exact path='*'>
             <NotFound></NotFound>

@@ -5,7 +5,7 @@ import './Tourguide.css';
 const Tourguide = () => {
     let [guide, setGuide] = useState([]);
     useEffect(() => {
-        fetch('https://shrieking-moonlight-70227.herokuapp.com/tourguide')
+        fetch('http://localhost:8888/tourguide')
             .then(res => res.json())
             .then(data => setGuide(data))
     }, [])

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './MyOrder.css'
 
@@ -7,21 +6,23 @@ const MyOrder = () => {
     let [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch('https://shrieking-moonlight-70227.herokuapp.com/orders')
+        fetch('http://localhost:8888/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
 
-    let handleDelete = id =>{
-        const url = `https://shrieking-moonlight-70227.herokuapp.com/orders/${id}`
-        axios.delete(url)
-        .then(res=>{
-            if(res.data.deletedCount){
-                alert('delete')
-                let rimeaning = orders.filter(service => service._id !==id)
-                setOrders(rimeaning)
-            }
-            console.log(res);
+    const handleDelete = id =>{
+        fetch(`http://localhost:8888/orders/${id}`,{
+            method:"DELETE",
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            // if(data.deletedCount>0){
+            //     alert('delete sucssesfully');
+            //     const remainingOrder = orders.filter(order=>order._id !== id )
+            //     setOrders(remainingOrder)
+            // }
+            console.log(data);
         })
     }
 

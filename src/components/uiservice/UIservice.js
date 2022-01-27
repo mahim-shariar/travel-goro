@@ -9,13 +9,13 @@ const UIservice = () => {
     let { id } = useParams();
     let { name, img, days, place, price } = pro;
     useEffect(() => {
-        fetch(`https://shrieking-moonlight-70227.herokuapp.com/service/${id}`)
+        fetch(`http://localhost:8888/service/${id}`)
             .then(res => res.json())
             .then(data => setPro(data))
     }, [])
 
     let handlePlaceOrder = () => {
-        axios.post('https://shrieking-moonlight-70227.herokuapp.com/orders', pro)
+        axios.post('http://localhost:8888/orders', pro)
             .then(res => {
                 if(res.data.insertedId){
                     alert('this product has is added')

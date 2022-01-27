@@ -9,18 +9,31 @@ const SignIn = () => {
     let location = useLocation();
     let history = useHistory()
 
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName };
+        fetch('http://localhost:8888/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then()
+    }
+    
     let redirect_uri = location.state?.form || '/';
     
     let handleGoogleSignIN = ()=>{
         signInWithGoogle()
         .then(res =>{
             setUser(res.user)
+            saveUser(res.user.email,res.user.displayName)
             history.push(redirect_uri)
         })
         .finally(()=> setIsLoading(false))
 
     }
-
+    
     return (
         <div className='p-5 mx-auto mt-5 border w-50 contaniner App ' >
                 <h1 className='text-center '>Login</h1>            
