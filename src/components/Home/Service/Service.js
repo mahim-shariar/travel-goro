@@ -6,7 +6,7 @@ const Service = (props) => {
     let { name, price, days, img, place,_id } = props.service;
     // console.log(props.service);
     return (
-        <div className='mb-4 col-lg-4 col-md-6' >
+        <div className='mb-4 col-lg-4 col-md-6 d-flex justify-content-center ' >
             <div className='ui-card'>
                 <img src={img} alt="" />
                 <div className='description'>

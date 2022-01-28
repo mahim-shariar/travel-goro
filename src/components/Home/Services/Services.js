@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
 import Service from '../Service/Service';
 import './Services.css';
 
@@ -11,9 +12,9 @@ const Services = () => {
             .then(data => setServices(data))
     }, [])
     return (
-        <div className='container' >
-            <div className="row" >
-                <div className='' >
+        <Container>
+            <div className="row mx-auto" >
+                <div>
                     <h1 className='fw-bold my-5 '>Experience of <span className='t-color' > Our Travelers </span></h1>
                 </div>
                 {
@@ -21,7 +22,7 @@ const Services = () => {
                         service={service} ></Service>)
                 }
             </div>
-        </div>
+        </Container>
     );
 };
 

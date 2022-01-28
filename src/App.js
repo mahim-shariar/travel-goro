@@ -26,9 +26,9 @@ function App() {
     <div className='App' >
       <AuthProvider>
         <Router>
-          <Header></Header>
           <Switch>
             <Route exact path='/' >
+              <Header></Header>
               <Main></Main>
               <Worldmap></Worldmap>
               <Services></Services>
@@ -37,6 +37,7 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path='/home' >
+              <Header></Header>
               <Main></Main>
               <Worldmap></Worldmap>
               <Services></Services>
@@ -45,30 +46,37 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path='/guide'>
+              <Header></Header>
               <AllGuides></AllGuides>
               <Footer></Footer>
             </Route>
             <Route path='/login'>
+              <Header></Header>
               <Login></Login>
               <Footer></Footer>
             </Route>
             <Route path='/registar'>
+              <Header></Header>
               <Registar></Registar>
               <Footer></Footer>
             </Route>
             <PrivateRoute path='/service/:id'>
+              <Header></Header>
               <UIservice></UIservice>
               <Footer></Footer>
             </PrivateRoute>
             <PrivateRoute path='/blog/:id'>
+              <Header></Header>
               <BlogInfo></BlogInfo>
               <Footer></Footer>
             </PrivateRoute>
             <PrivateRoute path='/myorder'>
+              <Header></Header>
               <MyOrder></MyOrder>
               <Footer></Footer>
             </PrivateRoute>
             <Route path='/contact'>
+              <Header></Header>
               <Contact></Contact>
               <Footer></Footer>
             </Route>
