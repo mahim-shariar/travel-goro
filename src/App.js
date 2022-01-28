@@ -20,6 +20,7 @@ import HomeBlogs from './components/HomeBlogs/HomeBlogs';
 import BlogInfo from './components/BlogInfo/BlogInfo';
 import Login from './components/Login/Login/Login';
 import Registar from './components/Login/Registar/Registar';
+import Blog from './components/DashBoard/Blog/Blog';
 
 function App() {
   return (
@@ -53,6 +54,11 @@ function App() {
             <Route path='/login'>
               <Header></Header>
               <Login></Login>
+              <Footer></Footer>
+            </Route>
+            <Route path='/Deshbord/blog'>
+              <Header></Header>
+              <Blog></Blog>
               <Footer></Footer>
             </Route>
             <Route path='/registar'>

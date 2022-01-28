@@ -26,6 +26,7 @@ const Navigation = () => {
                     <Link style={style}  to="/home">Home</Link>
                     <Link style={style}  to="/guide">Top guide</Link>
                     <Link style={style}  to="/contact">Contact </Link>
+                    <Link style={style}  to="/Deshbord/blog">Add Blog</Link>
                     <Link style={style} to='/Deshbord'>Deshbord</Link>
                     {
                         user.email ? <div className='d-flex mx-auto ' >
