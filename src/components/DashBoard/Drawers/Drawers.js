@@ -68,7 +68,7 @@ const Drawers = (props) => {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box className='bg-img3' sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar
                 position="fixed"

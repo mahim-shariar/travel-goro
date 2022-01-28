@@ -1,49 +1,62 @@
-import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import React from "react";
+import { Card, Col, Button } from "react-bootstrap";
 
 const OneBlog = (props) => {
-    let { _id, image, title, info, category, cost, address, description } = props.blog;
-    const handleSubmit = (e) => {
-        const id = { _id }
-        fetch(`https://thawing-woodland-53152.herokuapp.com/blog?role=${'panding'}`, {
-            method: "PUT",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(id)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount) {
-                    console.log(data);
-                }
-            })
-        e.preventDefault()
-    }
+    const { ticket, deleteTicket, updateStatus } = props;
+    //   console.log(ticket);
+    const {
+        _id,
+        image,
+        title,
+        category,
+        cost,
+        address,
+        info,
+        description,
+        isPending
+    } = ticket;
     return (
-        <div className='mb-4 col-lg-4 col-md-6' >
-            <div className='mx-auto'>
-                <img className='img-fluid' src={image} alt="" />
-                <div className='p-2' >
-                    <h3> {title} </h3>
-                    <h5> {info} </h5>
-                    <h6>{category} </h6>
-                    <p>${cost}</p>
-                    <p>{address}</p>
-                    <p className='' >{description}</p>
-                    <Dropdown >
-                        <Dropdown.Toggle className='btn btn-primary nav-link mx-auto' variant="success" id="dropdown-basic">
-                            All thing
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            <Dropdown.Item onClick={handleSubmit} >panding</Dropdown.Item>
-                            <Dropdown.Item onClick={handleSubmit} >accept</Dropdown.Item>
-                            <Dropdown.Item onClick={handleSubmit} >cancel</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </div>
+        <Col sm={12} md={12} lg={4}>
+            <div className="rounded-3">
+                <Card className="">
+                    <div>
+                        <img src={image} alt="" />
+                        <div className="p-2" >
+                            <h3>{title}</h3>
+                            <h5>{info}</h5>
+                            <p> Location:{address}</p>
+                            <h6>category:{category}</h6>
+                            <p>Travel Cost: ${cost}</p>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                    <Card.Footer className="d-flex">
+                        <Button
+                            onClick={() => {
+                                deleteTicket(_id);
+                            }}
+                            className="btn-danger"
+                        >
+                            <i className="fas fa-trash"></i>
+                            Delete Booking
+                        </Button>
+                        {isPending ? (
+                            <Button
+                                onClick={() => updateStatus(_id)}
+                                className="btn-warning ms-5"
+                            >
+                                <i className="fas fa-paperclip"></i>
+                                Pending
+                            </Button>
+                        ) : (
+                            <Button className=" btn-success disabled ms-5">
+                                <i className="fas fa-check"></i> Shipped
+                            </Button>
+                        )}
+                    </Card.Footer>
+                </Card>
             </div>
-        </div>
+        </Col>
     );
 };
 

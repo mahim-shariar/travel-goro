@@ -16,10 +16,11 @@ const Blog = () => {
     const [success, setSuccess] = useState(false)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
+        let allData = {...data,status:true,isPending:true}
         fetch('https://thawing-woodland-53152.herokuapp.com/blog', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(data)
+            body: JSON.stringify(allData)
         })
             .then(res => res.json())
             .then(data => {
