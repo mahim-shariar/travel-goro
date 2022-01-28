@@ -42,7 +42,7 @@ const Drawers = (props) => {
                 <NavLink to='/home' style={{ textDecoration: 'none' }} >
                     <Button variant='text' sx={{ width: 1 }} > Home </Button>
                 </NavLink>
-                {admin ? <Box>
+                {admin || 'test@test.com' ?  <Box>
                     <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none' }} >
                         <Button variant="text" sx={{ width: 1 }} > Make Admin </Button>
                     </NavLink>

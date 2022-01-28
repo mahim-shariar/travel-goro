@@ -8,7 +8,7 @@ const Contact = () => {
                 <div class="row p-5 ">
                     <div class="col-md-3">
                         <div class="contact-info text-light ">
-                            <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+                            <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="contact-img " />
                             <h2>Contact Us</h2>
                             <h4>We would love to hear from you !</h4>
                         </div>
