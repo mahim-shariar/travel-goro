@@ -23,55 +23,66 @@ import Registar from './components/Login/Registar/Registar';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Header></Header>
-        <Switch>
-          <Route exact path='/' >
-            <Main></Main>
-            <Worldmap></Worldmap>
-            <Services></Services>
-            <Tourguide></Tourguide>
-            <HomeBlogs></HomeBlogs>
-          </Route>
-          <Route path='/home' >
-            <Main></Main>
-            <Worldmap></Worldmap>
-            <Services></Services>
-            <Tourguide></Tourguide>
-            <HomeBlogs></HomeBlogs>
-          </Route>
-          <Route path='/guide'>
-            <AllGuides></AllGuides>
-          </Route>
-          <Route path='/login'>
-            <Login></Login>
-          </Route>
-          <Route path='/registar'>
-            <Registar></Registar>
-          </Route>
-          <PrivateRoute path='/service/:id'>
-            <UIservice></UIservice>
-          </PrivateRoute>
-          <PrivateRoute path='/blog/:id'>
-            <BlogInfo></BlogInfo>
-          </PrivateRoute>
-          <PrivateRoute path='/myorder'>
-            <MyOrder></MyOrder>
-          </PrivateRoute>
-          <Route path='/contact'>
-            <Contact></Contact>
-          </Route>
-          <PrivateRoute path='/Deshbord'>
-            <Drawers></Drawers>
-          </PrivateRoute>
-          <Route exact path='*'>
-            <NotFound></NotFound>
-          </Route>
-        </Switch>
-        {/* <Footer></Footer> */}
-      </Router>
-    </AuthProvider>
+    <div className='App' >
+      <AuthProvider>
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route exact path='/' >
+              <Main></Main>
+              <Worldmap></Worldmap>
+              <Services></Services>
+              <Tourguide></Tourguide>
+              <HomeBlogs></HomeBlogs>
+              <Footer></Footer>
+            </Route>
+            <Route path='/home' >
+              <Main></Main>
+              <Worldmap></Worldmap>
+              <Services></Services>
+              <Tourguide></Tourguide>
+              <HomeBlogs></HomeBlogs>
+              <Footer></Footer>
+            </Route>
+            <Route path='/guide'>
+              <AllGuides></AllGuides>
+              <Footer></Footer>
+            </Route>
+            <Route path='/login'>
+              <Login></Login>
+              <Footer></Footer>
+            </Route>
+            <Route path='/registar'>
+              <Registar></Registar>
+              <Footer></Footer>
+            </Route>
+            <PrivateRoute path='/service/:id'>
+              <UIservice></UIservice>
+              <Footer></Footer>
+            </PrivateRoute>
+            <PrivateRoute path='/blog/:id'>
+              <BlogInfo></BlogInfo>
+              <Footer></Footer>
+            </PrivateRoute>
+            <PrivateRoute path='/myorder'>
+              <MyOrder></MyOrder>
+              <Footer></Footer>
+            </PrivateRoute>
+            <Route path='/contact'>
+              <Contact></Contact>
+              <Footer></Footer>
+            </Route>
+            <PrivateRoute path='/Deshbord'>
+              <Drawers></Drawers>
+            </PrivateRoute>
+            <Route exact path='*'>
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+          {/* <Footer></Footer> */}
+        </Router>
+      </AuthProvider>
+    </div>
   );
 }
 

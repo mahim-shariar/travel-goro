@@ -13,8 +13,8 @@ const Services = () => {
     return (
         <div className='container' >
             <div className="row" >
-                <div className='text-tr' >
-                    <h1 className='text-margin text-center '>Experience of <span className='t-color' > Our Travelers </span></h1>
+                <div className='' >
+                    <h1 className='fw-bold my-5 '>Experience of <span className='t-color' > Our Travelers </span></h1>
                 </div>
                 {
                     services.map(service => <Service key={service._id}

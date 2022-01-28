@@ -30,7 +30,7 @@ const Registar = () => {
         }
     }
     return (
-        <Grid container spacing={2} className='bg-img3' >
+        <Grid container spacing={2} >
             <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}  >
                 {!isLoading ? <Paper elevation={10} >
                     <form style={{ padding: 50 }} onSubmit={handleRegistarSubmit}>
