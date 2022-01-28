@@ -25,8 +25,8 @@ const Footer = () =>
             </div>
         </div>
 
-        <div className="py-3 text-center footer-copyright">© 2020 Copyright:
-            <Link to="/home">Travel Gone</Link>
+        <div className="py-3 text-center footer-copyright">© 2022 Copyright:
+            <Link to="/home">Travel Zone</Link>
         </div>
 
     </footer>
